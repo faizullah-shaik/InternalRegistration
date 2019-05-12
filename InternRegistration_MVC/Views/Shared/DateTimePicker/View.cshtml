@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Home/About.cshtml";
+}
+@inherits System.Web.Mvc.WebViewPage<DateTime>
+@Html.TextBox("", Model.ToShortDateString(), new { @class = "datePicker" })
+<h2>View</h2>
+

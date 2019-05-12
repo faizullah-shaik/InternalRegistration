@@ -1,31 +1,246 @@
-﻿@{
+﻿
+@model InternRegistration_MVC.Models.Class1
+@{
+
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    @Html.AntiForgeryToken()
+
+
+    <body style="background-color:#F08080;">
+        <div class="jumbotron">
+            <h2 style="text-align:center;"><ins>REGISTRATION FORM</ins></h2>
+            <h3><ins>PERSONAL DETAILS</ins></h3>
+            @*@Html.LabelFor(m => m.EmpId)
+        <class="table">
+        <td>
+
+
+            <font color="red" size="5">*</font>
+
+        </td>
+
+        <td>
+            @Html.EditorFor(m => m.EmpId, new { data_val_required = "You need me" })*@
+
+            @*// @:First Name :
+        <input type="text" name="FirstName" value="" />*@
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.FirstName)
+                        <font color="red" size="5">*</font>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.FirstName, new { data_val_required = "You need me" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.LastName)
+                        <font color="red" size="5">*</font>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.LastName, new { data_val_required = "You need me" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.EmpId)
+                        <font color="red" size="5">*</font>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.EmpId, new { data_val_required = "You need me" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.EmailId)
+                        <font color="red" size="5">*</font>
+                    </td>
+
+                    <td>
+                        @Html.EditorFor(m => m.EmailId)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.CollegeName)
+                        <font color="red" size="5">*</font>
+                    </td>
+
+                    <td>
+                        @Html.EditorFor(m => m.CollegeName, new { data_val_required = "You need me" })
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+
+                        <strong> Course:</strong>
+                    </td>
+
+                    <td>
+                        @Html.DropDownList("Specialization", new List<SelectListItem>
+                     {
+                       new SelectListItem{ Text="CSE", Value="1"},
+                       new SelectListItem{ Text="EEE", Value="2"},
+                       new SelectListItem{ Text="ECE", Value="3"}
+                     })
+                    </td>
+                </tr>
+                <tr><td></td> </tr>
+                <tr> </tr>
+                <tr> </tr>
+                <tr>
+                    <td>
+                        <strong>  SkillSet:</strong>
+                    </td>
+                    <td>
+
+                        @Html.ListBox("SkillSet", new List<SelectListItem>
+                    {
+                         new SelectListItem{ Text="C++", Value="1"},
+                         new SelectListItem{ Text="ASP.NET", Value="2"},
+                         new SelectListItem{ Text="C#", Value="3"},
+                         new SelectListItem{ Text="SQL", Value="4"}
+                    })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Gender :</strong>
+                    </td>
+
+                    <td>
+                        @Html.RadioButton("Gender", "1")Male
+                        @Html.RadioButton("Gender", "2")Female
+                        @Html.RadioButton("Gender", "3")Other
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <h3><ins>PROFESSIONAL DETAILS</ins></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        @Html.LabelFor(m => m.Address1)
+
+                    </td>
+
+                    <td>
+                        @Html.EditorFor(m => m.Address1, new { data_val_required = "You need me" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Address2)
+                    </td>
+
+                    @*<font color="red" size="5">*</font>*@
+
+                    <td>
+                        @Html.EditorFor(m => m.Address2, new { data_val_required = "You need me" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>City_Town:</strong>
+                    </td>
+
+                    <td>
+
+                        @Html.ListBox("City_Town", new List<SelectListItem>
+                    {
+                         new SelectListItem{ Text="Hyderabad", Value="1"},
+                         new SelectListItem{ Text="Secundarabad", Value="2"},
+                         new SelectListItem{ Text="Ecil", Value="3"},
+                         new SelectListItem{ Text="Other", Value="4"}
+                    })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <strong> State:</strong>
+                    </td>
+
+                    <td>
+                        @Html.ListBox("State", new List<SelectListItem>
+                    {
+                         new SelectListItem{ Text="Telengana", Value="1"},
+                         new SelectListItem{ Text="Andhra", Value="2"},
+                         new SelectListItem{ Text="Raiyalseema", Value="3"},
+                         new SelectListItem{ Text="Other", Value="4"}
+                    })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Contact)
+                        <font color="red" size="5">*</font>
+                    </td>
+
+                    <td>
+                        @Html.EditorFor(m => m.Contact, new { data_val_required = "You need me" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.PinCode)
+                        <font color="red" size="5">*</font>
+                    </td>
+
+                    <td>
+                        @Html.EditorFor(m => m.PinCode, new { data_val_required = "You need me" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Photo)
+                        <font color="red" size="5">*</font>
+                    </td>
+
+                    <td>
+                        @*@Html.EditorFor(m => m.Photo, new { data_val_required = "You need me"})*@<input id="File1" type="file" />
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        <input id="Reset1" type="reset" value="Reset" /> 
+                    </td><td>
+                             <input type="submit" name="btnSubmit" value="Submit" /> 
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+                         window.onload = function () {
+                             alert("@ViewBag.Message");
+                         };
+        </script>
+    }
+
+}
+
